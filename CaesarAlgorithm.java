@@ -3,13 +3,15 @@ import java.util.Scanner;
 public class CaesarAlgorithm {
     Encrypt encrypt;
     Decrypt decrypt;
+    BruteForce bruteDecrypt;
 
     public static void main(String args[]) {
         Scanner EncryptOrDecryptChoice = new Scanner(System.in); // Create a Scanner object
         System.out.println("What do you want to do?");
         String EncryptOrDecrypt = EncryptOrDecryptChoice.nextLine(); // Read user input
-        while (!EncryptOrDecrypt.equals("encrypt") && !EncryptOrDecrypt.equals("decrypt")) {
-            System.out.println("You can only choose encrypt or decrypt");
+        while (!EncryptOrDecrypt.equals("encrypt") && !EncryptOrDecrypt.equals("decrypt")
+                && !EncryptOrDecrypt.equals("brute")) {
+            System.out.println("You can only choose encrypt or decrypt or brute");
             EncryptOrDecrypt = EncryptOrDecryptChoice.nextLine(); // Read user input
         }
         Scanner messageInput = new Scanner(System.in); // Create a Scanner object
@@ -31,6 +33,9 @@ public class CaesarAlgorithm {
 
             case "decrypt":
                 Decrypt.decrypt(message, cypherKey);
+                break;
+            case "brute":
+                BruteForce.bruteForceDecrypt(message);
                 break;
         }
 
